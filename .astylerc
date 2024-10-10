@@ -1,0 +1,31 @@
+# https://astyle.sourceforge.net/astyle.html
+suffix=none # -n
+
+style=attach # -A2
+break-closing-braces # -y
+# keep-one-line-statements # -o
+keep-one-line-blocks # -O
+# add-one-line-braces # -J <<
+# add-braces # -j
+remove-braces # -xj <<
+break-after-logical # -xL
+attach-return-type # -xf
+
+indent=spaces=2 # -s2
+convert-tabs # -c # disable when indent=force-tabs=$
+min-conditional-indent=0 # -m0
+
+indent-after-parens # -xU
+indent-labels # -L
+indent-preproc-define # -w
+
+pad-header # -H
+pad-oper # -p
+pad-comma # -xg
+unpad-paren # -U
+
+max-code-length=100 # -xC100
+align-pointer=name # -k3
+squeeze-ws
+squeeze-lines=1
+

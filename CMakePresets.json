@@ -1,0 +1,132 @@
+{
+    "version": 3,
+    "configurePresets": [
+		{
+			"name": "linux-base",
+			"hidden": true,
+			"binaryDir": "${sourceDir}/build/${presetName}",
+			"cacheVariables": {
+				"BUILD_TESTS": "ON"
+			}
+		},
+		{
+			"name": "windows-base",
+			"hidden": true,
+			"binaryDir": "${sourceDir}/build/${presetName}",
+			"cacheVariables": {
+				"CMAKE_C_COMPILER": "cl.exe",
+				"CMAKE_CXX_COMPILER": "cl.exe",
+				"CMAKE_BUILD_TESTS": "ON"
+			},
+			"condition": {
+				"type": "equals",
+				"lhs": "${hostSystemName}",
+				"rhs": "Windows"
+			}
+		},
+		{
+			"name": "Debug",
+			"displayName": "Debug",
+			"inherits": "linux-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+		},
+		{
+			"name": "Release",
+			"displayName": "Release",
+			"inherits": "linux-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+		},
+        {
+            "name": "x64-debug",
+            "displayName": "x64 Debug",
+            "inherits": "windows-base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+        },
+        {
+            "name": "x64-release",
+            "displayName": "x64 Release",
+            "inherits": "x64-debug",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+        },
+        {
+            "name": "x86-debug",
+            "displayName": "x86 Debug",
+            "inherits": "windows-base",
+            "architecture": {
+                "value": "x86",
+                "strategy": "external"
+            },
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+        },
+        {
+            "name": "x86-release",
+            "displayName": "x86 Release",
+            "inherits": "x86-debug",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+        }
+    ],
+	"buildPresets": [
+		{
+			"name": "linux-base",
+			"hidden": true
+		},
+		{
+			"name": "windows-base",
+			"hidden": true
+		},
+		{
+			"name": "Release",
+			"inherits": "linux-base",
+			"displayName": "Linux Release",
+			"configurePreset": "Release",
+			"configuration": "Release"
+		},
+		{
+			"name": "Debug",
+			"inherits": "linux-base",
+			"displayName": "Linux Debug",
+			"configurePreset": "Debug",
+			"configuration": "Debug"
+		},
+		{
+			"name": "x64-release",
+			"inherits": "windows-base",
+			"configurePreset": "x64-release",
+			"configuration": "Release"
+		},
+		{
+			"name": "x64-debug",
+			"inherits": "windows-base",
+			"configurePreset": "x64-debug",
+			"configuration": "Debug"
+		},
+		{
+			"name": "x86-release",
+			"inherits": "windows-base",
+			"configurePreset": "x86-release",
+			"configuration": "Release"
+		},
+		{
+			"name": "x86-debug",
+			"inherits": "windows-base",
+			"configurePreset": "x86-debug",
+			"configuration": "Debug"
+		}
+	]
+}
