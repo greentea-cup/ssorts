@@ -8,6 +8,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 option(SS_BUILD_TESTS "Build tests for sorts" OFF)
 
+add_executable(ssorts_run "main.cpp" "test/util.cpp")
+target_include_directories(ssorts_run PRIVATE "include")
+
 if (SS_BUILD_TESTS OR BUILD_TESTS)
 	enable_testing()
 	find_package(GTest MODULE REQUIRED)
@@ -17,6 +20,7 @@ if (SS_BUILD_TESTS OR BUILD_TESTS)
 		target_compile_options(ssorts_tests PRIVATE /utf-8)
 		target_compile_definitions(ssorts_tests PRIVATE _CRT_SECURE_NO_WARNINGS)
 	endif()
+	target_compile_options(ssorts_tests PRIVATE $<$<CONFIG:Debug>:-pg>)
 	target_include_directories(ssorts_tests PRIVATE "include")
 	target_link_libraries(ssorts_tests PRIVATE gtest)
 	add_test(NAME ssorts_tests_all COMMAND ssorts_tests)

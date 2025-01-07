@@ -1,5 +1,6 @@
 build/
 .ccls-cache/
+tmp/
 '
 CMakeLists.txt.user
 CMakeCache.txt

@@ -1,2 +1,2 @@
 #!/bin/bash
-cmake --build build/debug && ./build/debug/ssorts_tests
+cmake --build build/Debug -t ssorts_tests && ./build/Debug/ssorts_tests
